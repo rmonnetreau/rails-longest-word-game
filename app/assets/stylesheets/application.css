@@ -1,10 +1,48 @@
 /*
  * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
+ *= require_tree .
+ *= require_self
  */
+
+body {
+  background-color: #f8f9fa;
+  font-family: Georgia, serif;
+}
+
+/* ── Letter tiles ── */
+.letter-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: #212529;
+  color: #f8f9fa;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Georgia, serif;
+  letter-spacing: 0.05em;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.15s;
+}
+
+.letter-tile:hover {
+  transform: translateY(-3px);
+}
+
+.letter-tile.used {
+  background: #0d6efd;
+}
+
+/* ── Cards ── */
+.card {
+  border: none;
+  border-radius: 12px;
+}
+
+/* ── Navbar ── */
+.navbar-brand {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+}

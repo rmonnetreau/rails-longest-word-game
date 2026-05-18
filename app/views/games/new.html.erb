@@ -1,0 +1,40 @@
+<div class="text-center mb-5">
+  <h1 class="display-5 fw-bold">New Game</h1>
+  <p class="text-muted">Build the longest English word from these letters:</p>
+</div>
+
+<!-- Grid of letters -->
+<div class="d-flex justify-content-center gap-2 flex-wrap mb-5">
+  <% @letters.each do |letter| %>
+    <span class="letter-tile"><%= letter %></span>
+  <% end %>
+</div>
+
+<!-- Form -->
+<div class="card shadow-sm">
+  <div class="card-body">
+    <form action="<%= score_path %>" method="POST" data-turbo="false">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+      <!-- Pass letters to score action -->
+      <%= hidden_field_tag :letters, @letters.join(" ") %>
+
+      <div class="mb-3">
+        <label for="word" class="form-label fw-semibold">Your word</label>
+        <input
+          type="text"
+          id="word"
+          name="word"
+          class="form-control form-control-lg"
+          placeholder="Type a word…"
+          autocomplete="off"
+          required
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg w-100">
+        ▶ Play
+      </button>
+    </form>
+  </div>
+</div>

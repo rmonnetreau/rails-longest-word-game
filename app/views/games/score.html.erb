@@ -1,0 +1,43 @@
+<div class="text-center mb-5">
+  <h1 class="display-5 fw-bold">Results</h1>
+</div>
+
+<!-- Letters used -->
+<div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
+  <% @letters.each do |letter| %>
+    <span class="letter-tile <%= 'used' if @word.chars.include?(letter) %>">
+      <%= letter %>
+    </span>
+  <% end %>
+</div>
+
+<!-- Result card -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body text-center py-4">
+    <p class="fs-4 fw-bold mb-1">
+      Your word: <span class="text-primary"><%= @word %></span>
+    </p>
+
+    <% if @result == :congrats %>
+      <div class="alert alert-success mt-3 mb-0">
+        <%= @message %>
+      </div>
+    <% else %>
+      <div class="alert alert-danger mt-3 mb-0">
+        <%= @message %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Grand score -->
+<div class="text-center mb-4">
+  <p class="text-muted">
+    Grand total score: <strong class="fs-5"><%= @grand_score %> pts</strong>
+  </p>
+</div>
+
+<!-- Back link -->
+<div class="text-center">
+  <%= link_to "🔄 New Game", new_path, class: "btn btn-outline-primary btn-lg" %>
+</div>
